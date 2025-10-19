@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock List</title>
+    <style>
+        body { font-family: sans-serif; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        a { text-decoration: none; }
+        .btn { padding: 5px 10px; border-radius: 3px; color: white; }
+        .btn-add { background-color: #4CAF50; }
+        .btn-edit { background-color: #008CBA; }
+        .btn-delete { background-color: #f44336; }
+    </style>
+</head>
+<body>
+    <h1>Stock List</h1>
+    <p><a href="/add" class="btn btn-add">Add New Stock</a></p>
+    <table>
+        <thead>
+            <tr>
+                <th>종목코드</th>
+                <th>회사명</th>
+                <th>현재가</th>
+                <th>거래량</th>
+                <th>예측</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in stocks %}
+            <tr>
+                <td>{{ row['종목코드'] }}</td>
+                <td>{{ row['회사명'] }}</td>
+                <td>{{ row['현재가'] }}</td>
+                <td>{{ row['거래량'] }}</td>
+                <td>{{ row['예측'] }}</td>
+                <td>
+                    <a href="/edit/{{ loop.index0 }}" class="btn btn-edit">Edit</a>
+                    <a href="/delete/{{ loop.index0 }}" onclick="return confirm('Are you sure?')" class="btn btn-delete">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

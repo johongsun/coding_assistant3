@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Stock</title>
+    <style>
+        body { font-family: sans-serif; }
+        form { width: 300px; }
+        label, input { display: block; margin-bottom: 10px; }
+        input[type='submit'] { background-color: #008CBA; color: white; padding: 10px; border: none; border-radius: 3px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Edit Stock</h1>
+    <form action="/edit/{{ index }}" method="post">
+        <label for="종목코드">종목코드:</label>
+        <input type="text" id="종목코드" name="종목코드" value="{{ stock['종목코드'] }}" required>
+        <label for="회사명">회사명:</label>
+        <input type="text" id="회사명" name="회사명" value="{{ stock['회사명'] }}" required>
+        <label for="현재가">현재가:</label>
+        <input type="text" id="현재가" name="현재가" value="{{ stock['현재가'] }}" required>
+        <label for="거래량">거래량:</label>
+        <input type="text" id="거래량" name="거래량" value="{{ stock['거래량'] }}" required>
+        <label for="예측">예측:</label>
+        <input type="text" id="예측" name="예측" value="{{ stock['예측'] }}" required>
+        <input type="submit" value="Update Stock">
+    </form>
+    <a href="/">Back to list</a>
+</body>
+</html>
